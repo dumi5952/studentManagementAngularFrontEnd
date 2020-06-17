@@ -1,0 +1,116 @@
+<mat-tab-group>
+    <mat-tab label="Registration Form">
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+            <div class="mat-form-field-appearance-standard">
+                <div align=" center ">
+                    <div class="example-container ">
+                        <mat-form-field style="width: 50% " appearance="fill ">
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="fName" required>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field style="width: 50% " appearance="fill ">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lName" required>
+
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field style="width: 50% " appearance="fill ">
+                            <mat-label>Address</mat-label>
+                            <input matInput formControlName="address" required>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field style="width: 50% " appearance="fill ">
+                            <mat-label>Home Contact No</mat-label>
+                            <input matInput formControlName="po1" required>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field style="width: 50% " appearance="fill ">
+                            <mat-label>Mobile Contact No</mat-label>
+                            <input matInput formControlName="po2" required>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field style=" width: 50% " appearance="fill ">
+                            <mat-label>Parant Contact No</mat-label>
+                            <input matInput formControlName="po3" required>
+                        </mat-form-field>
+                        <br>
+                        <div class=" example-button-row pull-right" style="width: 50%; padding-right: 150px; ">
+                            <button mat-stroked-button color="warn" [disabled]="!studentForm.valid" type=" submit ">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </mat-tab>
+    <mat-tab label="View Student details ">
+
+        <mat-form-field style="width: 500px; ">
+            <mat-label>Filter</mat-label>
+            <input matInput style="size: 500px; " (keyup)="applyFilter($event) " placeholder="You can search by name id or contact number ">
+        </mat-form-field>
+        <table mat-table [dataSource]="dataSource " matSort>
+
+            <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="sid">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Id. </th>
+                <td mat-cell *matCellDef="let stu"> {{stu?.sid}} </td>
+            </ng-container>
+
+            <!-- first Name Column -->
+            <ng-container matColumnDef="fName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+                <td mat-cell *matCellDef="let stu"> {{stu?.fName}} </td>
+            </ng-container>
+
+            <!-- Last Name Column -->
+            <ng-container matColumnDef="lName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+                <td mat-cell *matCellDef="let stu"> {{stu?.lName}} </td>
+            </ng-container>
+
+            <!-- Address Column -->
+            <ng-container matColumnDef="Address">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+                <td mat-cell *matCellDef="let stu"> {{stu?.address}} </td>
+            </ng-container>
+
+            <!-- poNo1 Column -->
+            <ng-container matColumnDef="no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> contact numbers</th>
+                <td mat-cell *matCellDef="let stu">
+                    <ol *ngFor="let no of stu.no">
+                        <ul>{{no.phone}}
+                        </ul>
+                    </ol>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let stu">
+                    <button mat-icon-button class="green-Icon" (click)="openUpdateDialog(stu.sid)">
+                    <mat-icon>system_update_alt</mat-icon>
+                  </button>
+                    <button mat-icon-button color="warn" (click)="onDelete(stu.sid)">
+                    <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+    </mat-tab>
+    <mat-tab label="Third "> Content 3
+    </mat-tab>
+</mat-tab-group>
