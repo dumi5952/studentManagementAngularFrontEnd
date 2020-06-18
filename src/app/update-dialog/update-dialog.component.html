@@ -12,32 +12,40 @@
         <mat-form-field class="example-full-width ">
             <mat-label>First Name</mat-label>
             <input matInput formControlName="fName" required>
+            <mat-error>This field is mandatorry</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width ">
             <mat-label>Last Name</mat-label>
             <input matInput formControlName="lName" required>
-
+            <mat-error>This field is mandatorry</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width ">
             <mat-label>Address</mat-label>
             <input matInput formControlName="address" required>
+            <mat-error>This field is mandatorry</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width ">
             <mat-label>Home Contact No</mat-label>
             <input matInput formControlName="po1" required>
+            <mat-error *ngIf="updateForm.controls['po1'].errors?.required">This field is mandatorry</mat-error>
+            <mat-error *ngIf="updateForm.controls['po1'].errors?.minlength">Minimum 9 numbers needed</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width ">
             <mat-label>Mobile Contact No</mat-label>
             <input matInput formControlName="po2" required>
+            <mat-error *ngIf="updateForm.controls['po2'].errors?.required">This field is mandatorry</mat-error>
+            <mat-error *ngIf="updateForm.controls['po2'].errors?.minlength">Minimum 9 numbers needed</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width">
             <mat-label>Parant Contact No</mat-label>
             <input matInput formControlName="po3" required>
+            <mat-error *ngIf="updateForm.controls['po3'].errors?.required">This field is mandatorry</mat-error>
+            <mat-error *ngIf="updateForm.controls['po3'].errors?.minlength">Minimum 9 numbers needed</mat-error>
         </mat-form-field>
         <br>
         <button mat-stroked-button color="primary" [disabled]="!updateForm.valid" type="submit ">Update</button>

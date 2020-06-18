@@ -45,9 +45,9 @@ this.updateForm.controls['po3'].setValue(this.student.no[2].phone);
      fName: new FormControl('',Validators.required),
      lName: new FormControl('',Validators.required),
      address: new FormControl('',Validators.required),
-     po1: new FormControl('',Validators.required),
-     po2: new FormControl('',Validators.required),
-     po3: new FormControl('',Validators.required)
+     po1: new FormControl('',[Validators.required, Validators.minLength(9)]),
+     po2: new FormControl('',[Validators.required, Validators.minLength(9)]),
+     po3: new FormControl('',[Validators.required, Validators.minLength(9)])
     // this.update.onSearchByID(sid)
   })
 

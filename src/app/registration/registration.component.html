@@ -4,35 +4,43 @@
             <div class="mat-form-field-appearance-standard">
                 <div align=" center ">
                     <div class="example-container ">
-                        <mat-form-field style="width: 50% " appearance="fill ">
+                        <mat-form-field style="width: 50% " appearance="fill">
                             <mat-label>First Name</mat-label>
                             <input matInput formControlName="fName" required>
+                            <mat-error>This field is mandatorry</mat-error>
                         </mat-form-field>
                         <br>
-                        <mat-form-field style="width: 50% " appearance="fill ">
+                        <mat-form-field style="width: 50% " appearance="fill">
                             <mat-label>Last Name</mat-label>
                             <input matInput formControlName="lName" required>
-
+                            <mat-error>This field is mandatorry</mat-error>
                         </mat-form-field>
                         <br>
-                        <mat-form-field style="width: 50% " appearance="fill ">
+                        <mat-form-field style="width: 50% " appearance="fill">
                             <mat-label>Address</mat-label>
                             <input matInput formControlName="address" required>
+                            <mat-error>This field is mandatorry</mat-error>
                         </mat-form-field>
                         <br>
-                        <mat-form-field style="width: 50% " appearance="fill ">
+                        <mat-form-field style="width: 50% " appearance="fill">
                             <mat-label>Home Contact No</mat-label>
                             <input matInput formControlName="po1" required>
+                            <mat-error *ngIf="studentForm.controls['po1'].errors?.required">This field is mandatorry</mat-error>
+                            <mat-error *ngIf="studentForm.controls['po1'].errors?.minlength">Minimum 9 numbers needed</mat-error>
                         </mat-form-field>
                         <br>
-                        <mat-form-field style="width: 50% " appearance="fill ">
+                        <mat-form-field style="width: 50% " appearance="fill">
                             <mat-label>Mobile Contact No</mat-label>
                             <input matInput formControlName="po2" required>
+                            <mat-error *ngIf="studentForm.controls['po2'].errors?.required">This field is mandatorry</mat-error>
+                            <mat-error *ngIf="studentForm.controls['po2'].errors?.minlength">Minimum 9 numbers needed</mat-error>
                         </mat-form-field>
                         <br>
-                        <mat-form-field style=" width: 50% " appearance="fill ">
+                        <mat-form-field style=" width: 50% " appearance="fill">
                             <mat-label>Parant Contact No</mat-label>
                             <input matInput formControlName="po3" required>
+                            <mat-error *ngIf="studentForm.controls['po3'].errors?.required">This field is mandatorry</mat-error>
+                            <mat-error *ngIf="studentForm.controls['po3'].errors?.minlength">Minimum 9 numbers needed</mat-error>
                         </mat-form-field>
                         <br>
                         <div class=" example-button-row pull-right" style="width: 50%; padding-right: 150px; ">
