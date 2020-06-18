@@ -14,7 +14,10 @@ import { MatDialog,MatDialogConfig, MatSnackBar } from '@angular/material';
 import { UpdateDialogComponent } from "../update-dialog/update-dialog.component";
 
 
+export interface dialogData{
+  sid:number;
 
+}
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -25,6 +28,8 @@ export class RegistrationComponent implements OnInit {
   URL ="http://localhost:8080";
   displayedColumns: string[] = ['sid', 'fName','lName', 'Address', 'no', 'Action'];
   dataSource:MatTableDataSource<student>;
+
+
 
 studentForm= new FormGroup({
   fName: new FormControl('',Validators.required),
@@ -141,13 +146,17 @@ onSubmit(){
     dialogConfig.autoFocus = true;
     dialogConfig.width ="30%";
     dialogConfig.height="85%";
-    this.dialog.open(UpdateDialogComponent,dialogConfig);
-    
-    this.service.searchById(sid).subscribe(res=>{
-      console.log(res);
+    const dialogRef = this.dialog.open(UpdateDialogComponent, {
+      width: '600px',
+      data: {sid:sid}
     });
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.loadingData();
+    });
   }
+
+
 
   onDelete(sid:number){
 if(confirm('Are you sure want to deleat this recode from your system?')){

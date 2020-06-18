@@ -21,6 +21,7 @@ import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSortModule,MatDialogModule,
     MatIconModule,
     MatSnackBarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatToolbarModule
 
   ],
   entryComponents:[

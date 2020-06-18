@@ -20,8 +20,14 @@ export class UserRegistrationService {
   public deleteStudent(sid:number) {
      return this.http.delete(this.URL+"/deleteStudent/"+sid);
   }
-  
+
   public searchById(sid:number){
     return this.http.get(this.URL+"/findStudent/"+sid);
   }
+
+  public updateDetails(stu:any){
+    return this.http.put(this.URL+"/updateStudent",stu);
+  }
+
+  
 }
